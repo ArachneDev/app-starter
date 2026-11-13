@@ -1,7 +1,6 @@
-# Hosting request for a new app. The owner reads it, then runs the new-app
-# command in ArachneDev/infra (tools/new-app/) to create the app's repo.
+# Hosting request for a new app. The owner reads it and creates the app's repo.
 name: New app
-description: Ask the owner to host a new app on the ArachneDev platform.
+description: Ask the owner to host a new app.
 title: "New app: "
 body:
   - type: markdown
@@ -48,7 +47,7 @@ body:
       description: |
         One per line. Non-secret settings as `NAME=value`. Secrets as `NAME (secret)`, with no value.
       placeholder: |
-        PUBLIC_URL=https://example.doublew.nu
+        PUBLIC_URL=https://myapp.example.com
         DISCORD_CLIENT_ID=123456789012345678
         DISCORD_CLIENT_SECRET (secret)
     validations:
