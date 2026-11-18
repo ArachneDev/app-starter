@@ -1,0 +1,10 @@
+# TODO(t45): switch @t44-prod-staging-tags to @v1 once app-pipeline v1.2.0 ships.
+name: release
+on:
+  pull_request:
+  push: {branches: [main], tags: ["v*.*.*"]}
+jobs:
+  build:
+    permissions: {contents: read, packages: write}
+    uses: ArachneDev/app-pipeline/.github/workflows/build.yml@t44-prod-staging-tags
+    with: {app-json: ci/app.json}
