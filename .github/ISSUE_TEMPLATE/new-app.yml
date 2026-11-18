@@ -48,7 +48,7 @@ body:
         One per line. Non-secret settings as `NAME=value`. Secrets as `NAME (secret)`, with no value.
       placeholder: |
         PUBLIC_URL=https://myapp.example.com
-        DISCORD_CLIENT_ID=123456789012345678
+        DISCORD_CLIENT_ID=<your app's application ID>
         DISCORD_CLIENT_SECRET (secret)
     validations:
       required: true
