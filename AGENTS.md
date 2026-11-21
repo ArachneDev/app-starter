@@ -18,7 +18,7 @@ Check your change: open a pull request. The pipeline builds the image, runs it u
 ## Release
 
 1. Merge to `main`, then push a tag `vX.Y.Z` on that commit. Check: `ghcr.io/arachnedev/<repo>:vX.Y.Z` exists.
-2. Production follows only when `.github/workflows/release.yml` has `promote: true` and `production-url: https://<first hostname>/healthz` (the app-pipeline README, "Release channels"). The owner sets those when the app is first hosted. The tag then waits for the owner's approval; after it, the job moves `:prod` and moves it back if `/healthz` fails.
+2. Production follows only when `.github/workflows/release.yml` has `promote: true` and `production-url: https://<first hostname>/healthz` (the app-pipeline README, "Release channels"), and the repo's `production` Environment has the owner as required reviewer. If either is missing, ask the owner: without the reviewer, `:prod` moves unapproved. The tag then waits for the owner's approval; after it, the job moves `:prod` and moves it back if `/healthz` fails.
 
 ## Secrets
 
