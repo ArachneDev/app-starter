@@ -2,6 +2,10 @@
 
 This app is hosted as a container by a shared platform. The platform does not care what is inside the image, only that it follows this contract. Keep it true when you change the code.
 
+This is a copy. The source is the container contract in the platform's blueprint, which is private; a weekly check there compares the version below with the blueprint's and flags a difference. Change the text here only when the platform changes the contract.
+
+Contract version: 235db985147e
+
 - **Port.** Listen on `PORT` (default 3000), above 1024.
 - **Variables.** List every variable the app reads in `.env.example`, one `# description` line each.
 - **Secrets.** Read app secrets only from `/run/secrets/app.json`. Pass each value to the code that needs it; never export it to the environment, log it or put it in the image or a build argument. A missing key is a clear start-up error. Never commit a real secret; `ci/app.json` holds fake values only.
