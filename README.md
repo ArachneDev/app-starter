@@ -18,7 +18,7 @@ None. List every external service (database, API, bot token) the app calls.
 
 ## Memory
 
-About 16 MB idle [Local test, Node 22 on Alpine]. Replace with the measured peak under load, and pass it to the pipeline as `memory` (peak plus 25 to 50 percent) if the 512m default is too large.
+Peak about 57 MB of resident memory under load (3000 `/healthz` requests, 20 at a time) and about 16 MB idle [Local test, Node 22 on Alpine, 64 MB limit]. The pipeline default of 512m is plenty. Replace this with your own app's measured peak, and pass it as `memory` (peak plus 25 to 50 percent) if you want a tighter limit.
 
 ## Secrets
 
@@ -27,8 +27,6 @@ The app reads them from `/run/secrets/app.json`, a JSON object (see `ci/app.json
 ## CI
 
 `.github/workflows/release.yml` calls the shared build in `ArachneDev/app-pipeline`: pull requests build, scan and run the contract test; a version tag such as `v1.0.0` also pushes the image to ghcr.io.
-
-> **Pin note (prep for ticket 45).** The workflow currently uses `@t44-prod-staging-tags` so CI can run before app-pipeline `v1.2.0` ships. Once it ships, change it to `@v1` and delete this note. Dependabot then keeps it current.
 
 ## Before the first commit
 
