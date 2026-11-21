@@ -15,4 +15,13 @@ This app is hosted as a container by a shared platform. The platform does not ca
 
 Check your change: open a pull request. The pipeline builds the image, runs it under these limits, scans it and names any broken line with its fix.
 
-Releases: push a tag `vX.Y.Z`; the image appears as `ghcr.io/arachnedev/<repo>:vX.Y.Z`.
+## Release
+
+1. Merge to `main`, then push a tag `vX.Y.Z` on that commit. Check: `ghcr.io/arachnedev/<repo>:vX.Y.Z` exists.
+2. Production follows only when `.github/workflows/release.yml` has `promote: true` and `production-url: https://<first hostname>/healthz` (the app-pipeline README, "Release channels"). The owner sets those when the app is first hosted. The tag then waits for the owner's approval; after it, the job moves `:prod` and moves it back if `/healthz` fails.
+
+## Secrets
+
+- A value lives in the `ArachneDev/<stack>-secrets` repo, set with `./set-secret NAME` as its README shows. The developer or owner types it at a hidden prompt; never print, commit or ask for one.
+- In code: read the key from `/run/secrets/app.json`, as the contract says, and add a fake value for it to `ci/app.json`.
+- Hosting a new secret's repo, or giving an app secrets the first time, is done in `infra` (`docs/runbook/app-secrets.md`).
