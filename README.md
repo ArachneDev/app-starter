@@ -4,6 +4,8 @@ The template every new ArachneDev app repo is created from. It builds as is and 
 
 `.github/ISSUE_TEMPLATE/new-app.yml` is the hosting request form for this template repo only; it is removed from new repos.
 
+New here? [docs/developer-guide.md](docs/developer-guide.md) takes you from a repo request to a live release.
+
 ## Port
 
 3000 (the `PORT` variable overrides it). The only route besides `/` is `/healthz`, which returns `ok <version>`, the `VERSION` build argument.
